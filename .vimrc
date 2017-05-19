@@ -56,6 +56,7 @@ imap <Leader>] <ESC>:w<CR> :!gdb %< -q <CR>
 imap <Leader>[ <ESC>:w<CR> :!g++ % -o %< -g -Wall<CR>
 imap <Leader>\ <ESC>:w<CR> :!time ./%< <CR>
 imap <Leader>in <ESC>:w<CR> :!vim in.txt<CR>
+imap <Leader>g :w<CR> :!gedit %<CR>
 
 map <Leader>; :w<CR>
 map <Leader>' :wq<CR>
@@ -63,7 +64,7 @@ map <Leader>] :w<CR> :!gdb %< -q <CR>
 map <Leader>[ :w<CR> :!g++ % -o %< -g -Wall<CR>
 map <Leader>\ :w<CR> :!time ./%< <CR>
 map <Leader>in :w<CR> :!vim in.txt<CR>
-
+map <Leader>g :w<CR> :!gedit %<CR>
 
 
 " ------------------------------------ "
