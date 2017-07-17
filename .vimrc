@@ -1,10 +1,12 @@
+set mouse=a
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set showcmd
 set number
 set ruler
-" set mouse=a
+" set nobackup " 取消备份文件
+set mouse=a
 set autoindent
 filetype on
 filetype indent on
@@ -64,9 +66,9 @@ syntax on
 " imap [ []<LEFT>
 " imap ( ()<LEFT>
 " imap () ()
-" imap {<CR> {}<LEFT><CR><CR><UP><TAB>
+"imap { {}<LEFT> <CR><UP><ESC>$a
 
-imap { {}<LEFT> <CR><UP><ESC>$a
+imap {<CR> { }<LEFT><CR><CR><UP><TAB>
 
 imap <Leader>; <ESC>:w<CR>
 imap <Leader>' <ESC>:wq<CR>
@@ -136,10 +138,10 @@ set completeopt=longest,menu
 "是否开启语义补全"
 let g:ycm_seed_identifiers_with_syntax=1
 "是否在注释中也开启补全"
-let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_comments=0
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 "开始补全的字符数"
-let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_min_num_of_chars_for_completion=4
 "补全后自动关机预览窗口"
 let g:ycm_autoclose_preview_window_after_completion=1
 " 禁止缓存匹配项,每次都重新生成匹配项"
