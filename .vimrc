@@ -1,4 +1,4 @@
-echo "(>^.^<)"
+" echo "(>^.^<)"
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -7,6 +7,7 @@ set showcmd
 set number
 set ruler
 set autoindent
+
 " set nobackup " 取消备份文件
 " set mouse=a
 filetype on
@@ -57,9 +58,11 @@ map <Leader>' :wq<CR>
 "Quickly Run
 """"""""""""""""""""""
 map <Leader>[ :call CompileRunGcc()<CR>
-imap <Leader>[ :w<CR> :call CompileRunGcc()<CR>
+imap <Leader>[ <ESC>:w<CR> :call CompileRunGcc()<CR>
 map <Leader>] :call Debug()<CR>
-imap <Leader>] :w<CR> :call Debug()<CR>
+imap <Leader>] <ESC>:w<CR> :call Debug()<CR>
+map <Leader>, :w<CR>:!oalj -i %<CR>
+imap <Leader>, <ESC>:w<CR>:!oalj -i %<CR>
 
 func! Debug()
     exec "w"
@@ -76,21 +79,12 @@ if &filetype == 'c'
             exec "!g++ % -o %<.run && time ./%<.run && rm ./%<.run"
 elseif &filetype == 'cpp'
             exec "!g++ % -o %<.run && time ./%<.run && rm ./%<.run"
-elseif &filetype == 'java'
-            exec "!javac %"
-            exec "!time java %<"
 elseif &filetype == 'sh'
             :!time bash %
 elseif &filetype == 'python'
             exec "!time python3 %"
 elseif &filetype == 'html'
-            exec "!firefox % &"
-elseif &filetype == 'go'
-            exec "!go build %<"
-            exec "!time go run %"
-elseif &filetype == 'mkd'
-            exec "!~/.vim/markdown.pl % > %.html &"
-            exec "!firefox %.html &"
+            exec "!chromium % &"
 endif
     endfunc
 
@@ -103,12 +97,15 @@ endif
 " 如果需要使用先 
 " git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+
 " vundle 环境设置
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-theme'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors' " <C-N> 快速选中下一个和已经选中的字符串相同的字符串
 Plugin 'Shougo/vimproc.vim'
@@ -123,6 +120,28 @@ filetype plugin indent on
 " :PluginInstall
 
 " --------- 插件配置 ----------------- "
+
+" -- Airline -- "
+"" airline settings.
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+let g:airline#extensions#tabline#enabled = 1
+" show absolute file path in status line
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+" show tab number in tab line
+let g:airline#extensions#tabline#tab_nr_type = 1
 
 " -- YCM -- "
 
