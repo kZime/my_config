@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerline"
+ZSH_THEME="ys"
 POWERLINE_PATH="short"
 POWERLINE_HIDE_HOST_NAME="true"
 # Uncomment the following line to use case-sensitive completion.
