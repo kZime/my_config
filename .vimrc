@@ -1,7 +1,7 @@
-echo "(>^.^<)"
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+echo "OvO"
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set showcmd
 set number
@@ -67,9 +67,9 @@ imap <Leader>, <ESC>:w<CR>:!oalj -i %<CR>
 func! Debug()
     exec "w"
 if &filetype == 'c'
-            exec "!g++ % -o %<.run -g && gdb ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g && gdb -q ./%<.run && rm ./%<.run"
 elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run -g && gdb ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g && gdb -q ./%<.run && rm ./%<.run"
 endif
     endfunc
 
@@ -88,10 +88,6 @@ elseif &filetype == 'html'
 endif
     endfunc
 
-" 手动复制粘贴用
-" map <F3> :set nonumber<CR>:IndentLinesDisable<CR>
-" map <F4> :set number<CR>:IndentLinesEnable<CR>
-
 " ------------------------------------ "
 " 以下是插件相关
 " 如果需要使用先 
@@ -105,12 +101,11 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-theme'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors' " <C-N> 快速选中下一个和已经选中的字符串相同的字符串
 Plugin 'Shougo/vimproc.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
 filetype plugin indent on
@@ -146,7 +141,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 " -- YCM -- "
 
 "默认配置文件路径"
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf ='~/.ycmd.py'
 "打开vim时不再询问是否加载ycm_extra_conf.py配置"
 let g:ycm_confirm_extra_conf=0
 set completeopt=longest,menu
