@@ -67,9 +67,9 @@ imap <Leader>, <ESC>:w<CR>:!oalj -i %<CR>
 func! Debug()
     exec "w"
 if &filetype == 'c'
-            exec "!g++ % -o %<.run -g && gdb -q ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g && cgdb -q ./%<.run && rm ./%<.run"
 elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run -g && gdb -q ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g && cgdb -q ./%<.run && rm ./%<.run"
 endif
     endfunc
 
