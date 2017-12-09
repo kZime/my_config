@@ -67,24 +67,24 @@ imap <Leader>, <ESC>:w<CR>:!oalj -i %<CR>
 func! Debug()
     exec "w"
 if &filetype == 'c'
-            exec "!g++ % -o %<.run -g && cgdb -q ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g; and cgdb -q ./%<.run; and rm ./%<.run"
 elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run -g && cgdb -q ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run -g; and cgdb -q ./%<.run; and rm ./%<.run"
 endif
     endfunc
 
 func! CompileRunGcc()
     exec "w"
 if &filetype == 'c'
-            exec "!g++ % -o %<.run && time ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run; and ./%<.run; and rm ./%<.run"
 elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run && time ./%<.run && rm ./%<.run"
+            exec "!g++ % -o %<.run; and ./%<.run; and rm ./%<.run"
+elseif &filetype == 'haskell'
+            exec "!ghc % -o %<.run; and ./%<.run"
 elseif &filetype == 'sh'
             :!time bash %
 elseif &filetype == 'python'
             exec "!time python3 %"
-elseif &filetype == 'html'
-            exec "!chromium % &"
 endif
     endfunc
 
@@ -100,12 +100,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'vim-airline/vim-airline'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'terryma/vim-multiple-cursors' " <C-N> 快速选中下一个和已经选中的字符串相同的字符串
 Plugin 'Shougo/vimproc.vim'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 call vundle#end()
 filetype plugin indent on
@@ -116,50 +114,6 @@ filetype plugin indent on
 
 " --------- 插件配置 ----------------- "
 
-" -- Airline -- "
-"" airline settings.
-
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline#extensions#tabline#enabled = 1
-" show absolute file path in status line
-let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
-" show tab number in tab line
-let g:airline#extensions#tabline#tab_nr_type = 1
-
-" -- YCM -- "
-
-"默认配置文件路径"
-let g:ycm_global_ycm_extra_conf ='~/.ycmd.py'
-"打开vim时不再询问是否加载ycm_extra_conf.py配置"
-let g:ycm_confirm_extra_conf=0
-set completeopt=longest,menu
-"是否开启语义补全"
-let g:ycm_seed_identifiers_with_syntax=1
-"是否在注释中也开启补全"
-let g:ycm_complete_in_comments=0
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-"开始补全的字符数"
-let g:ycm_min_num_of_chars_for_completion=2
-"补全后自动关机预览窗口"
-let g:ycm_autoclose_preview_window_after_completion=1
-" 禁止缓存匹配项,每次都重新生成匹配项"
-let g:ycm_cache_omnifunc=0
-"字符串中也开启补全"
-let g:ycm_complete_in_strings = 1
-"离开插入模式后自动关闭预览窗口"
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 " -- indentLine -- "
 
 "缩进指示线"
