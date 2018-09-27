@@ -1,0 +1,92 @@
+internet:
+    dhcpcd
+    wifi-menu
+
+time:
+    timedatectl set-ntp true
+    fdisk -l
+    fdisk /dev/sda
+
+mount:
+    mount /dev/sda2 /mnt
+    mkdir /mnt/home
+    mount /dev/sda1 /mnt/home  # Your Home
+
+
+vim /etc/pacman.d/mirrorlist
+
+pacstrap /mnt base base-devel
+genfstab -L /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
+
+arch-chroot /mnt
+
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc
+
+pacman -S vim dialog wpa_supplicant ntfs-3g
+
+vim /etc/locale.gen   # set CN, HK, TW, US
+locale-gen
+
+vim /etc/locale.conf  # add to last "LANG=en_US.UTF-8"
+
+vim /etc/hostname   # hostname
+
+vim /etc/hosts 
+
+# 127.0.0.1	localhost.localdomain	localhost
+# ::1		localhost.localdomain	localhost
+# 127.0.1.1	myhostname.localdomain	myhostname
+
+passwd
+
+pacman -S intel-ucode
+
+pacman -S os-prober
+
+pacman -S grub
+
+grub-install --target=i386-pc /dev/sdx
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+#  if there is "warning failed to connect to lvmetad，falling back to device scanning"
+#  vim /etc/lvm/lvm.cong    set  "use_lvmetad = 0"
+
+vim /boot/grub/grub.cfg
+
+cd /boot
+ls
+
+exit
+reboot
+
+--------------------------------------------------------------
+
+sudo pacman -S git
+
+git clone http://github.com/erikdubois/archi3
+ls -aux
+
+--------------------------------------------------------------
+
+fallocate -l 8G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+
+vim /etc/fstab
+# /swapfile none swap defaults 0 0
+
+useradd -m -G wheel [username]
+passwd [username]
+
+pacman -S sudo
+
+visudo
+# %wheel ALL=(ALL)ALL
+
+reboot
+
+--------------------------------------------------------------
