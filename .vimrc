@@ -1,4 +1,4 @@
-echo "OvO"
+echo "QAQ"
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -65,57 +65,19 @@ map <Leader>, :w<CR>:!oalj -i %<CR>
 imap <Leader>, <ESC>:w<CR>:!oalj -i %<CR>
 
 func! Debug()
-    exec "w"
-if &filetype == 'c'
-            exec "!g++ % -o %<.run -g; and cgdb -q ./%<.run; and rm ./%<.run"
-elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run -g; and cgdb -q ./%<.run; and rm ./%<.run"
+  :w
+if &filetype == 'cpp'
+  :!clear && g++ % -o %<.run -g && cgdb -q ./%<.run && rm ./%<.run
 endif
-    endfunc
+  endfunc
 
 func! CompileRunGcc()
-    exec "w"
-if &filetype == 'c'
-            exec "!g++ % -o %<.run; and ./%<.run; and rm ./%<.run"
-elseif &filetype == 'cpp'
-            exec "!g++ % -o %<.run; and ./%<.run; and rm ./%<.run"
-elseif &filetype == 'haskell'
-            exec "!ghc % -o %<.run; and ./%<.run"
+  :w
+if &filetype == 'cpp'
+  :!clear && g++ % -o %<.run && ./%<.run && rm ./%<.run
 elseif &filetype == 'sh'
-            :!time bash %
+  :!clear && time bash %
 elseif &filetype == 'python'
-            exec "!time python3 %"
+  :!clear && time python3 %
 endif
-    endfunc
-
-" ------------------------------------ "
-" 以下是插件相关
-" 如果需要使用先 
-" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-
-" vundle 环境设置
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors' " <C-N> 快速选中下一个和已经选中的字符串相同的字符串
-Plugin 'Shougo/vimproc.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Yggdroot/indentLine'
-call vundle#end()
-filetype plugin indent on
-
-
-" 安装方法
-" :PluginInstall
-
-" --------- 插件配置 ----------------- "
-
-" -- indentLine -- "
-
-"缩进指示线"
-let g:indentLine_char='┆'
-let g:indentLine_enabled = 1
+  endfunc
