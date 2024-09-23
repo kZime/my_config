@@ -1,0 +1,55 @@
+---
+Language: Cpp  # 语言：C++
+BasedOnStyle: LLVM  # 基于 LLVM 样式
+AccessModifierOffset: -4  # 访问修饰符偏移量
+AlignConsecutiveAssignments: false  # 不对齐连续的赋值语句
+AlignConsecutiveDeclarations: false  # 不对齐连续的声明语句
+AlignOperands: false  # 不对齐操作数
+AlignTrailingComments: true  # 对齐尾随注释
+AllowShortBlocksOnASingleLine: true  # 允许短代码块在单行上
+AlwaysBreakTemplateDeclarations: Yes  # 始终在模板声明后换行
+BraceWrapping:  # 大括号换行设置
+  AfterCaseLabel: false  # 不在 case 标签后换行
+  AfterClass: false  # 不在类声明后换行
+  AfterControlStatement: false  # 不在控制语句后换行
+  AfterEnum: false  # 不在枚举声明后换行
+  AfterFunction: false  # 不在函数声明后换行
+  AfterNamespace: false  # 不在命名空间声明后换行
+  AfterStruct: false  # 不在结构体声明后换行
+  AfterUnion: false  # 不在联合体声明后换行
+  AfterExternBlock: false  # 不在 extern 块后换行
+  BeforeCatch: true  # 在 catch 之前换行
+  BeforeElse: true  # 在 else 之前换行
+  BeforeLambdaBody: false  # 不在 lambda 体之前换行
+  BeforeWhile: true  # 在 while 之前换行
+  SplitEmptyFunction: false  # 不拆分空函数
+  SplitEmptyRecord: false  # 不拆分空记录
+  SplitEmptyNamespace: false  # 不拆分空命名空间
+BreakBeforeBraces: Custom  # 自定义大括号换行
+BreakConstructorInitializers: AfterColon  # 在冒号后换行
+BreakConstructorInitializersBeforeComma: false  # 不在逗号前换行
+ColumnLimit: 120  # 列宽限制
+ConstructorInitializerAllOnOneLineOrOnePerLine: false  # 构造函数初始化列表不在一行或每行一个
+ContinuationIndentWidth: 8  # 续行缩进宽度
+IncludeCategories:  # 包含文件类别
+  - Regex: '^<.*'  # 正则表达式：匹配以 < 开头的文件
+    Priority: 1  # 优先级：1
+  - Regex: '^".*'  # 正则表达式：匹配以 " 开头的文件
+    Priority: 2  # 优先级：2
+  - Regex: '.*'  # 正则表达式：匹配所有文件
+    Priority: 3  # 优先级：3
+IncludeIsMainRegex: '([-_](test|unittest))?$'  # 正则表达式：匹配测试文件
+IndentCaseLabels: true  # 缩进 case 标签
+IndentWidth: 4  # 缩进宽度：4
+InsertNewlineAtEOF: true  # 在文件末尾插入换行符
+MacroBlockBegin: ''  # 宏块开始
+MacroBlockEnd: ''  # 宏块结束
+MaxEmptyLinesToKeep: 2  # 保留的最大空行数：2
+NamespaceIndentation: All  # 命名空间缩进：所有
+SpaceInEmptyParentheses: false  # 空括号中不加空格
+SpacesInAngles: false  # 角括号中不加空格
+SpacesInConditionalStatement: false  # 条件语句中不加空格
+SpacesInCStyleCastParentheses: false  # C 风格强制转换括号中不加空格
+SpacesInParentheses: false  # 括号中不加空格
+TabWidth: 4  # 制表符宽度：4
+...
