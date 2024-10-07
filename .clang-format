@@ -1,6 +1,6 @@
 ---
 Language: Cpp  # 语言：C++
-BasedOnStyle: LLVM  # 基于 LLVM 样式
+BasedOnStyle: GOOGLE  # 基于 LLVM 样式
 AccessModifierOffset: -4  # 访问修饰符偏移量
 AlignConsecutiveAssignments: true  # 修改：对齐连续的赋值语句，提高可读性
 AlignConsecutiveDeclarations: true  # 修改：对齐连续的声明语句，提高可读性
@@ -9,14 +9,14 @@ AlignTrailingComments: true  # 对齐尾随注释
 AllowShortBlocksOnASingleLine: false  # 修改：不允许短代码块在单行上，避免代码混乱
 AlwaysBreakTemplateDeclarations: Yes  # 始终在模板声明后换行
 BraceWrapping:  # 大括号换行设置
-  AfterCaseLabel: true  # 修改：在 case 标签后换行，增加可读性
-  AfterClass: true  # 修改：在类声明后换行，遵循 CSE 428 规范
-  AfterControlStatement: true  # 修改：在控制语句后换行，避免单行代码过长
-  AfterEnum: true  # 修改：在枚举声明后换行，遵循 CSE 428 规范
-  AfterFunction: true  # 修改：在函数声明后换行，便于分隔代码块
+  AfterCaseLabel: false  # 不在 case 标签后换行
+  AfterClass: false  # 不在类声明后换行
+  AfterControlStatement: false  # 不在控制语句后换行
+  AfterEnum: false  # 不在枚举声明后换行
+  AfterFunction: false  # 不在函数声明后换行
   AfterNamespace: false  # 不在命名空间声明后换行
-  AfterStruct: true  # 修改：在结构体声明后换行，遵循 CSE 428 规范
-  AfterUnion: true  # 修改：在联合体声明后换行，提高代码清晰度
+  AfterStruct: false  # 不在结构体声明后换行
+  AfterUnion: false  # 不在联合体声明后换行
   AfterExternBlock: false  # 不在 extern 块后换行
   BeforeCatch: true  # 在 catch 之前换行
   BeforeElse: true  # 在 else 之前换行
@@ -52,19 +52,17 @@ SpacesInConditionalStatement: true  # 修改：条件语句中加空格，提升
 SpacesInCStyleCastParentheses: false  # C 风格强制转换括号中不加空格
 SpacesInParentheses: false  # 括号中不加空格
 TabWidth: 4  # 制表符宽度：4
-Nullptr: true  # 修改：使用 nullptr 代替 NULL，符合 C++11 规范
 DerivePointerAlignment: false  # 修改：指针对齐方式保持一致
 PointerAlignment: Right  # 修改：指针符号右对齐，提高指针和变量的关联性
 ...
 
 
 
-; 修改说明
-; AlignConsecutiveAssignments 和 AlignConsecutiveDeclarations：启用这些设置以对齐连续的赋值和声明语句，增强代码可读性。
-; AllowShortBlocksOnASingleLine：禁用短代码块在单行上的配置，防止代码变得混乱。
-; BraceWrapping：调整了大括号换行设置，增加了在类、控制语句、结构体等之后换行的配置，符合CSE 428规范，增加代码块的清晰度。
-; ColumnLimit：将列宽限制为 80，避免过长的代码行。
-; ConstructorInitializerAllOnOneLineOrOnePerLine：构造函数初始化列表每行一个，便于阅读和调试。
-; SpacesInConditionalStatement：在条件语句中加空格，提高代码可读性。
-; Nullptr：使用 nullptr 代替 NULL，符合现代C++规范。
-; PointerAlignment：将指针符号对齐到右侧，确保指针和变量的关联更明确。
+# 修改说明
+# AlignConsecutiveAssignments 和 AlignConsecutiveDeclarations：启用这些设置以对齐连续的赋值和声明语句，增强代码可读性。
+# AllowShortBlocksOnASingleLine：禁用短代码块在单行上的配置，防止代码变得混乱。
+# BraceWrapping：调整了大括号换行设置，增加了在类、控制语句、结构体等之后换行的配置，符合CSE 428规范，增加代码块的清晰度。
+# ColumnLimit：将列宽限制为 80，避免过长的代码行。
+# ConstructorInitializerAllOnOneLineOrOnePerLine：构造函数初始化列表每行一个，便于阅读和调试。
+# SpacesInConditionalStatement：在条件语句中加空格，提高代码可读性。
+# PointerAlignment：将指针符号对齐到右侧，确保指针和变量的关联更明确。
