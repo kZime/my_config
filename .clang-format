@@ -6,7 +6,7 @@ AlignConsecutiveAssignments: true  # 修改：对齐连续的赋值语句，提�
 AlignConsecutiveDeclarations: true  # 修改：对齐连续的声明语句，提高可读性
 AlignOperands: false  # 不对齐操作数
 AlignTrailingComments: true  # 对齐尾随注释
-AllowShortBlocksOnASingleLine: false  # 修改：不允许短代码块在单行上，避免代码混乱
+AllowShortBlocksOnASingleLine: true
 AlwaysBreakTemplateDeclarations: Yes  # 始终在模板声明后换行
 BraceWrapping:  # 大括号换行设置
   AfterCaseLabel: false  # 不在 case 标签后换行
